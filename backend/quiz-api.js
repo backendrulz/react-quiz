@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 
+// Routes
+const routes = require("./routes");
+
 // Config
 app.set("port", process.env.PORT || 3001);
 app.set("json spaces", 2);
@@ -18,6 +21,9 @@ app.get("/", (req, res) => {
     message: "API REST react-quiz",
   });
 });
+
+// API Routes
+app.use("/api", routes);
 
 // catch error and forward to error handler
 app.use(function (err, req, res, next) {
